@@ -1,0 +1,339 @@
+/* customerRegisterStyles.css - Scoped for RegisterCustomer component only */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Component-specific CSS variables */
+.customer-register-container {
+  --primary-color: #4361ee;
+  --primary-light: #4895ef;
+  --secondary-color: #3f37c9;
+  --accent-color: #4cc9f0;
+  --text-color: #2b2d42;
+  --text-light: #8d99ae;
+  --success-color: #2ec4b6;
+  --error-color: #e63946;
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --transition: all 0.3s ease;
+  
+  /* Main container styles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Reset styles only for elements within the container */
+.customer-register-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Decorative elements */
+.customer-register-container .decoration-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 0;
+}
+
+.customer-register-container .circle1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.5;
+}
+
+.customer-register-container .circle2 {
+  width: 500px;
+  height: 500px;
+  bottom: -250px;
+  right: -250px;
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+  opacity: 0.4;
+}
+
+.customer-register-container .circle3 {
+  width: 200px;
+  height: 200px;
+  top: 30%;
+  right: 10%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  opacity: 0.3;
+}
+
+/* Card styles */
+.customer-register-container .customer-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+  padding: 2.5rem;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-register-container .customer-card.animated {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.customer-register-container .customer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+/* Header styles */
+.customer-register-container .customer-card-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.customer-register-container .customer-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.customer-register-container .customer-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+/* Form styles */
+.customer-register-container .customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.customer-register-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.customer-register-container .input-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.customer-register-container .input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.customer-register-container .input-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.customer-register-container .customer-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 3rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.customer-register-container .customer-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+.customer-register-container .customer-input::placeholder {
+  color: #adb5bd;
+}
+
+/* Button styles */
+.customer-register-container .submit-button {
+  background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.customer-register-container .submit-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: var(--transition);
+}
+
+.customer-register-container .submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+}
+
+.customer-register-container .submit-button:hover::before {
+  left: 100%;
+  transition: 0.7s;
+}
+
+.customer-register-container .submit-button:active {
+  transform: translateY(-1px);
+}
+
+.customer-register-container .submit-button.loading {
+  background: #a0a0a0;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.customer-register-container .loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: customer-register-spin 1s linear infinite;
+}
+
+@keyframes customer-register-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Message styles */
+.customer-register-container .message-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  animation: customer-register-fade-in 0.3s ease;
+}
+
+.customer-register-container .message-container.success {
+  background-color: rgba(46, 196, 182, 0.1);
+  border-left: 4px solid var(--success-color);
+}
+
+.customer-register-container .message-container.error {
+  background-color: rgba(230, 57, 70, 0.1);
+  border-left: 4px solid var(--error-color);
+}
+
+.customer-register-container .message-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.customer-register-container .success .message-icon {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.customer-register-container .error .message-icon {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.customer-register-container .message-text {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Footer styles */
+.customer-register-container .form-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.customer-register-container .login-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.customer-register-container .login-link:hover {
+  text-decoration: underline;
+}
+
+/* Animations - renamed to avoid conflicts */
+@keyframes customer-register-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .customer-register-container .customer-card {
+    padding: 2rem;
+  }
+  
+  .customer-register-container .customer-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .customer-register-container .customer-card {
+    padding: 1.5rem;
+  }
+  
+  .customer-register-container .customer-title {
+    font-size: 1.5rem;
+  }
+}

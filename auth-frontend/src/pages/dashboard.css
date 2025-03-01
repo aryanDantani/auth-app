@@ -1,0 +1,340 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --admin-primary: #6c5ce7;
+  --admin-secondary: #a29bfe;
+  --customer-primary: #0984e3;
+  --customer-secondary: #74b9ff;
+  --text-light: #f8f9fa;
+  --text-dark: #2d3436;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #0f0c29;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png') repeat;
+  z-index: 0;
+}
+
+.twinkling {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png') repeat; */
+  animation: twinkle 40s linear infinite;
+  z-index: 1;
+}
+
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+.dashboard-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.main-title {
+  color: var(--text-light);
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.5s ease;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+}
+
+.card-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.card:hover .card-content {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.card-front {
+  color: var(--text-light);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  color: var(--text-light);
+}
+
+.admin-card .card-front {
+  background: linear-gradient(45deg, var(--admin-primary), var(--admin-secondary));
+}
+
+.admin-card .card-front::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.admin-card .card-back {
+  background: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
+.customer-card .card-front {
+  background: linear-gradient(45deg, var(--customer-primary), var(--customer-secondary));
+}
+
+.customer-card .card-front::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.customer-card .card-back {
+  background: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 50px;
+  height: 3px;
+  background: var(--text-light);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+  width: 100px;
+}
+
+.card-back h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.card-back h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.card-back ul {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.card-back ul li {
+  margin-bottom: 0.8rem;
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+}
+
+.card-back ul li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+}
+
+.card-cta {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  margin-top: auto;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card:hover .card-cta {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.login-prompt {
+  color: var(--text-light);
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  opacity: 0.8;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.login-prompt a {
+  color: #00cec9;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px dashed #00cec9;
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+
+.login-prompt a:hover {
+  color: #81ecec;
+  border-bottom: 1px solid #81ecec;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .cards-container {
+    gap: 2rem;
+  }
+  
+  .card {
+    width: 280px;
+    height: 380px;
+  }
+  
+  .card-icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 1.5rem;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cards-container {
+    gap: 1.5rem;
+  }
+  
+  .card {
+    width: 260px;
+    height: 350px;
+  }
+}
